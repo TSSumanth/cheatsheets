@@ -1,0 +1,123 @@
+Create a local repository: 
+$git init
+Create a remote repo from Local repo:
+•	Login to git hub and create a new repository.  
+•	Copy repo https url.
+
+In local repo git bash type:
+$git remote add <remote-name> <remote-url>
+$git remote add origin https://github.com/TSSumanth/cheatsheets.git
+
+Push changes:
+$git push <remote-name> <branch-name>
+$git push origin master
+
+Clone a remote repo:
+$git clone <https-repo-url>
+
+Undo changes in Working area
+$git check_out <filename_1> <filename_2> <filename_3> .. <filename_n>
+$git check_out .
+$git check_out *
+
+Stage changes
+$git add <filename1> <filename2> …<filename_n>
+$git add .
+$git add *
+
+Unstage changes
+$git reset HEAD <File_Name>
+$git reset HEAD .
+$git reset HEAD *
+
+Commit changes
+$git commit –m “message”
+
+Uncommit changes Local repo:
+$git reset HEAD~1
+$git reset HEAD~n  => last n commits
+$git reset --mixed HEAD~n => moves changes from local repo to working area
+$git reset --soft HEAD~n => moves changes from local repo to staging area
+$git reset --hard HEAD~n => removes changes completely from local repo, staging area, working area
+
+fetch changes from remote
+$git fecth
+
+pull changes from remote
+$git pull remote_name branch_name
+$git pull origin master
+
+push changes to remote
+$git push remote_name branch_name
+$git push origin master
+
+Undo commits in remote
+$git revert commit_id
+
+get commit details
+$git log
+get short commitid
+$git log --oneline
+
+Move head to x commit
+$git checkout commit_id
+
+List all branchs
+$git branch => local branches
+$git branch –r => remote branches
+
+Checkout branch
+$git checkout <Branch_Name>
+$git checkout master
+
+Create Branch
+$git branch <branch_name>
+$git branch sprint_1
+
+To create and checkout branch in single command:
+$git checkout –b sprint_1
+
+Merge Operations
+
+fast-farward
+	when no extra commits are present in current branch.
+	$git checkout master
+	$git merge sprint_1
+	$git log =>  new commit will not be created and master will be pointed to Sprint_1 HEAD
+merge
+	when master has some commits and sprint_1 has some commits.
+	$git checkout master
+	$git merge sprint_1
+	$git log =>  a new commit is created
+
+Rebase
+if branch sprint_1 is created from master and in master an important fix is done which need to be present in Sprint_1 the we use rebase
+$git checkout sprint_1
+$git rebase master
+$git log => a new commit will be created
+
+View differences
+$git diff => to  list all the changes in working tree
+$git diff <commit_id1> <commit_id2>
+$git diff <branch_1> <branch_2>
+
+cherry-pick commits
+master -> sprint is created from master.
+if a commit is made to sprint and the commit needs to be sent to master as well then we use cherry-pick.
+$git checkout master
+$git cherry-pick commit_id
+	resolve merge conflicts if any.
+$git add .
+$git cherry-pick –continue
+   :wq  enter.
+
+Interactive rebase
+used to remove/ alter one or more commits.
+Combine two commits to one -> squashing
+remove a commit from history -> drop
+change commit message -> reword
+$git rebase –I HEAD~n => n is number of commits we will be alterning.
+
+Configuration Options
+$git config --global user.name “Name”
+$git config --global user.email “email_address”
