@@ -121,3 +121,6 @@ $git rebase –I HEAD~n => n is number of commits we will be alterning.
 Configuration Options
 $git config --global user.name “Name”
 $git config --global user.email “email_address”
+
+2FA git push: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
